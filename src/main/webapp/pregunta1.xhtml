@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:form>
+        <h:outputLabel value="#{preguntaBean.texto}" />
+
+        <h:selectOneRadio value="#{preguntaBean.respuesta}">
+            <f:selectItem itemValue="1" itemLabel="Respuesta 1" />
+            <f:selectItem itemValue="2" itemLabel="Respuesta 2" />
+            <f:selectItem itemValue="3" itemLabel="Respuesta 3" />
+            <f:selectItem itemValue="4" itemLabel="Respuesta 4" />
+        </h:selectOneRadio>
+
+        <h:commandButton value="Continuar" action="#{preguntaBean.continuar}" />
+    </h:form>
+</f:view>
+</html>
