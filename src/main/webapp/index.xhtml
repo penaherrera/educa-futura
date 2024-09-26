@@ -34,25 +34,25 @@
                 </div>
             </div>
 
-            <h3>Seleccione su carrera de preferencia</h3>
-            <div class="col-12 md:col-4">
-                <div class="ui-inputgroup">
-                    <div class="ui-inputgroup-addon" ><i class="pi pi-graduation-cap"></i></div>
-                    <p:selectCheckboxMenu id="carrerasMenu"
-                                          label="Carreras"
-                                          value="#{usuarioBean.carrerasSeleccionadas}"
-                                          filter="true"
-                                          dynamic="true"
-                                          panelStyle="width: 15rem"
-                                          scrollHeight="250"
-                                          style="width: 100%">
-                        <f:selectItems value="#{usuarioBean.carrerasDisponibles}" var="carrera" itemValue="#{carrera}" itemLabel="#{carrera}" />
-                    </p:selectCheckboxMenu>
-                </div>
-            </div>
+<!--            <h3>Seleccione su carrera de preferencia</h3>-->
+<!--            <div class="col-12 md:col-4">-->
+<!--                <div class="ui-inputgroup">-->
+<!--                    <div class="ui-inputgroup-addon" ><i class="pi pi-graduation-cap"></i></div>-->
+<!--                    <p:selectCheckboxMenu id="carrerasMenu"-->
+<!--                                          label="Carreras"-->
+<!--                                          value="#{usuarioBean.carrerasSeleccionadas}"-->
+<!--                                          filter="true"-->
+<!--                                          dynamic="true"-->
+<!--                                          panelStyle="width: 15rem"-->
+<!--                                          scrollHeight="250"-->
+<!--                                          style="width: 100%">-->
+<!--                        <f:selectItems value="#{usuarioBean.carrerasDisponibles}" var="carrera" itemValue="#{carrera}" itemLabel="#{carrera}" />-->
+<!--                    </p:selectCheckboxMenu>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <div class="button-container">
-                <p:button value="INGRESAR" styleClass="ui-button-raised ui-button-flat" action="#{usuarioBean.saveUsuario()}" />
+                <h:commandButton value="INGRESAR" styleClass="ui-button-raised ui-button-flat" action="#{usuarioBean.saveUsuario()}" />
             </div>
         </div>
 
