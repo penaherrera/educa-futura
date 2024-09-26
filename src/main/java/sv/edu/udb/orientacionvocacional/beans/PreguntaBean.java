@@ -1,6 +1,7 @@
 package sv.edu.udb.orientacionvocacional.beans;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
@@ -58,6 +59,7 @@ public class PreguntaBean {
         Pregunta preguntaActual = preguntaService.getPreguntaById(preguntaId);
         if (preguntaActual != null) {
             this.texto = preguntaActual.getTexto();
+            this.respuesta = 1; // Inicializa respuesta para evitar respuestas vacias
         }
     }
 
@@ -86,8 +88,16 @@ public class PreguntaBean {
         respuestaService.saveRespuesta(nuevaRespuesta);
 
         Long siguientePreguntaId = preguntaActual.getId() + 1;
-
+       //agrega un mensaje al confirmar respuesta
+        addMessage("Confirmado", "Respuesta Enviada");
         return "pregunta" + siguientePreguntaId + ".xhtml?id=" + siguientePreguntaId + "&faces-redirect=true";
+    }
+
+
+    //funcion para mostrar mensaje
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
 }

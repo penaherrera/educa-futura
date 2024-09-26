@@ -4,19 +4,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+    <title>Pregunta 1</title>
+    <h:outputStylesheet name="css/pregunta.css"/>
+</h:head>
+
+<h:body>
     <h:form>
-        <h:outputLabel value="#{preguntaBean.texto}" />
+        <h1 >Pregunta 1</h1>
+        <h3>¿Qué actividad disfrutas más en tu tiempo libre?</h3>
+        <!-- <h3>#{preguntaBean.texto}</h3> -->
 
-        <h:selectOneRadio value="#{preguntaBean.respuesta}">
-            <f:selectItem itemValue="1" itemLabel="Trabajar con números y resolver problemas financieros" />
-            <f:selectItem itemValue="2" itemLabel="Ayudar a otras personas a resolver problemas emocionales o personales" />
-            <f:selectItem itemValue="3" itemLabel="Crear soluciones tecnológicas o desarrollar software" />
-            <f:selectItem itemValue="4" itemLabel="Trabajar con herramientas y construir cosas" />
-        </h:selectOneRadio>
+        <div class="select-options ">
+            <p:selectOneRadio id="basicAjax" value="#{preguntaBean.respuesta}" layout="grid" columns="1">
+                <p:ajax listener="#{preguntaBean.respuesta}" />
 
-        <h:commandButton value="Continuar" action="#{preguntaBean.continuar}" />
+                <f:selectItem itemValue="1" itemLabel="Trabajar con números y resolver problemas financieros" class="select-option " />
+                <f:selectItem itemValue="2" itemLabel="Ayudar a otras personas a resolver problemas emocionales o personales" class="select-option" />
+                <f:selectItem itemValue="3" itemLabel="Crear soluciones tecnológicas o desarrollar software"  class="select-option" />
+                <f:selectItem itemValue="4" itemLabel="Trabajar con herramientas y construir cosas"  class="select-option"/>
+            </p:selectOneRadio>
+        </div>
+
+        <div class="button-container">
+            <p:commandButton type="button" value="REGRESAR" styleClass="ui-button-raised ui-button-danger ui-button-flat" action="#{usuarioBean.saveUsuario()}"/>
+
+            <p:commandButton value="ENVIAR" action="#{preguntaBean.continuar()}" update="message" styleClass="mr-2" icon="pi pi-check">
+                <p:confirm header="Confirmación" message="¿Estás seguro de que deseas enviar esta respuesta?" icon="pi pi-exclamation-triangle"/>
+            </p:commandButton>
+        </div>
+
+        <!-- Componente para mostrar mensajes -->
+        <p:growl id="message" showDetail="true"/>
+
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Yes" action="#{preguntaBean.continuar()}" update="message" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog>
     </h:form>
-</f:view>
+</h:body>
 </html>
