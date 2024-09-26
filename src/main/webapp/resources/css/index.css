@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1f2937;
+}
+.card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 100px rgba(0, 0, 0, 01);
+    width: 400px;
+
+}
+.ui-inputgroup {
+    width: 100%;
+}
+input {
+    width: 100%;
+    padding: 10px;
+}
+h3 {
+    text-align: center;
+    color: #fff;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+

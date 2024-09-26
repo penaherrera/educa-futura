@@ -3,15 +3,60 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:form>
-        <h:outputLabel value="Ingrese su nombre:" for="nombreInput" />
-        <h:inputText id="nombreInput" value="#{usuarioBean.nombre}" required="true" />
-        <h:message for="nombreInput" style="color:red;" />
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Formulario de Usuario</title>
+    <h:outputStylesheet name="css/index.css"/>
+</h:head>
 
-        <h:commandButton value="Siguiente" action="#{usuarioBean.saveUsuario}" />
+<h:body>
+    <h:form>
+
+        <div class="card" style="background: white; width: 350px;">
+            <div class="grid ui-fluid">
+                <h3>Ingrese su nombre</h3>
+                <div class="col-12 md:col-4">
+                    <div class="ui-inputgroup">
+                        <div class="ui-inputgroup-addon"><i class="pi pi-user"></i></div>
+                        <p:inputText placeholder="Username" id="nombreInput" value="#{usuarioBean.nombre}" required="true" />
+                    </div>
+                </div>
+            </div>
+
+            <h3>Ingrese su correo</h3>
+            <div class="col-12 md:col-4">
+                <div class="ui-inputgroup">
+                    <div class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></div>
+                    <p:inputText placeholder="Correo" id="correo" value="#{usuarioBean.correo}" required="true" />
+                </div>
+            </div>
+
+            <h3>Seleccione su carrera de preferencia</h3>
+            <div class="col-12 md:col-4">
+                <div class="ui-inputgroup">
+                    <div class="ui-inputgroup-addon" ><i class="pi pi-graduation-cap"></i></div>
+                    <p:selectCheckboxMenu id="carrerasMenu"
+                                          label="Carreras"
+                                          value="#{usuarioBean.carrerasSeleccionadas}"
+                                          filter="true"
+                                          dynamic="true"
+                                          panelStyle="width: 15rem"
+                                          scrollHeight="250"
+                                          style="width: 100%">
+                        <f:selectItems value="#{usuarioBean.carrerasDisponibles}" var="carrera" itemValue="#{carrera}" itemLabel="#{carrera}" />
+                    </p:selectCheckboxMenu>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <p:button value="INGRESAR" styleClass="ui-button-raised ui-button-flat" action="#{usuarioBean.saveUsuario()}" />
+            </div>
+        </div>
+
+        <h:message for="nombreInput" style="color:red;" />
     </h:form>
-</f:view>
+</h:body>
 </html>

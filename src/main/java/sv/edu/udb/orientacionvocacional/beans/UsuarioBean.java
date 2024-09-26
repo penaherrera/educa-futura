@@ -7,8 +7,11 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.application.FacesMessage;
 import lombok.Getter;
 import lombok.Setter;
+import org.primefaces.PrimeFaces;
 import sv.edu.udb.orientacionvocacional.service.UsuarioService;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Named
 @RequestScoped
@@ -20,6 +23,17 @@ public class UsuarioBean implements Serializable {
     @Getter @Setter
     private String nombre;
 
+    @Getter @Setter
+    private String correo;
+
+    @Getter @Setter
+    private List<String> carrerasSeleccionadas = new ArrayList<>();
+
+    public List<String> getCarrerasDisponibles() {
+        // Devuelve la lista de carreras disponibles
+        //mandar a llamar de la bd
+        return List.of("Ingeniería en Sistemas", "Arquitectura", "Medicina", "Psicología");
+    }
     public String saveUsuario() {
         String result = usuarioService.saveUsuario(nombre);
         if ("success".equals(result)) {
@@ -31,4 +45,5 @@ public class UsuarioBean implements Serializable {
             return null;
         }
     }
+
 }
