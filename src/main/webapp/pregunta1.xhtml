@@ -31,7 +31,7 @@
         <div class="button-container">
             <p:commandButton type="button" value="REGRESAR" styleClass="ui-button-raised ui-button-danger ui-button-flat" action="#{usuarioBean.saveUsuario()}"/>
 
-            <h:commandButton value="Continuar" action="#{preguntaBean.continuar}" />
+            <p:commandButton value="Continuar" action="#{preguntaBean.continuar}" />
         </div>
 
         <!-- Componente para mostrar mensajes -->
@@ -39,7 +39,7 @@
 
         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
-            <h:commandButton value="Si" action="#{preguntaBean.continuar()}" update="message" styleClass="ui-confirmdialog-yes" />
+            <p:commandButton value="Si" action="#{preguntaBean.continuar()}" update="message" styleClass="ui-confirmdialog-yes" />
         </p:confirmDialog>
     </h:form>
 </h:body>
