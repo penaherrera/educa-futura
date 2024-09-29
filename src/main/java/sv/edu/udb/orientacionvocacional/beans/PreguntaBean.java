@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -16,9 +17,11 @@ import sv.edu.udb.orientacionvocacional.service.RespuestaService;
 import sv.edu.udb.orientacionvocacional.service.PreguntaService;
 import sv.edu.udb.orientacionvocacional.service.UsuarioService;
 
+import java.io.Serializable;
+
 @Named
-@RequestScoped
-public class PreguntaBean {
+@ViewScoped
+public class PreguntaBean implements Serializable {
 
     @Setter
     @Getter
@@ -88,7 +91,7 @@ public class PreguntaBean {
         respuestaService.saveRespuesta(nuevaRespuesta);
 
         Long siguientePreguntaId = preguntaActual.getId() + 1;
-        //agrega un mensaje al confirmar respuesta
+       //agrega un mensaje al confirmar respuesta
         addMessage("Confirmado", "Respuesta Enviada");
         return "pregunta" + siguientePreguntaId + ".xhtml?id=" + siguientePreguntaId + "&faces-redirect=true";
     }
