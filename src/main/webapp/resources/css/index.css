@@ -33,3 +33,20 @@ h3 {
     margin-top: 20px;
 }
 
+
+.btnEnviar {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: .2s;
+}
+
+.btnEnviar:hover {
+    background-color: darkblue;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
