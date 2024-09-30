@@ -8,23 +8,23 @@
       xmlns:p="http://primefaces.org/ui" >
 
 <h:head>
-    <title>Pregunta 2</title>
+    <title>Pregunta 3</title>
     <h:outputStylesheet name="css/pregunta.css"/>
 </h:head>
 
 <h:body>
     <h:form>
-        <h1 >Pregunta 2</h1>
+        <h1>Pregunta 3</h1>
         <h3>#{preguntaBean.texto}</h3>
 
         <div class="select-options ">
             <p:selectOneRadio id="basicAjax" value="#{preguntaBean.respuesta}" layout="grid" columns="1">
                 <p:ajax listener="#{preguntaBean.respuesta}" />
 
-                <f:selectItem itemValue="1" itemLabel="Oficinas con un entorno formal y estructurado, con tareas financieras y administrativas" class="select-option " />
-                <f:selectItem itemValue="2" itemLabel="Espacios donde puedas interactuar con muchas personas y ayudarles directamente" class="select-option" />
-                <f:selectItem itemValue="3" itemLabel="Laboratorios o ambientes de alta tecnología donde puedas experimentar e innovar"  class="select-option" />
-                <f:selectItem itemValue="4" itemLabel="Estudios de diseño o sitios de construcción donde puedas ver tus proyectos tomar forma"  class="select-option"/>
+                <f:selectItem itemValue="1" itemLabel="Analizar números, hacer cálculos y resolver problemas financieros" class="select-option " />
+                <f:selectItem itemValue="2" itemLabel="Escuchar, comprender y apoyar a los demás en sus problemas" class="select-option" />
+                <f:selectItem itemValue="3" itemLabel="Programar, diseñar circuitos o resolver problemas técnicos complejos"  class="select-option" />
+                <f:selectItem itemValue="4" itemLabel="Dibujar, planificar o crear diseños visuales o arquitectónicos"  class="select-option"/>
             </p:selectOneRadio>
         </div>
 

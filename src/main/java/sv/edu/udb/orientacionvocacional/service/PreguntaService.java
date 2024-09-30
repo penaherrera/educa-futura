@@ -14,15 +14,11 @@ import sv.edu.udb.orientacionvocacional.repository.domain.Usuario;
 @NoArgsConstructor(force = true)
 public class PreguntaService {
 
-    private final PreguntaRepository preguntaRepository;
+    @Inject
+    private PreguntaRepository preguntaRepository;
 
     @Inject
-    public PreguntaService(PreguntaRepository preguntaRepository) {
-        this.preguntaRepository = preguntaRepository;
-    }
-
-    @Inject
-    private UsuarioSession usuarioSession; // Inyecta la sesión del usuario
+    private UsuarioSession usuarioSession;
 
     public Pregunta getPreguntaById(Long id) {
         return preguntaRepository.findById(id);

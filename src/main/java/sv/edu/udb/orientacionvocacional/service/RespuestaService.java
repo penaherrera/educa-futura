@@ -8,6 +8,7 @@ import sv.edu.udb.orientacionvocacional.repository.RespuestaRepository;
 import sv.edu.udb.orientacionvocacional.repository.domain.Respuesta;
 import sv.edu.udb.orientacionvocacional.repository.domain.Usuario;
 
+import java.util.List;
 import java.util.Optional;
 
 @Named
@@ -58,6 +59,18 @@ public class RespuestaService {
             return respuestaExistente;
         } else {
             return Optional.empty();
+        }
+    }
+
+    public List<Respuesta> getRespuestasByUser(Long id) {
+
+        Usuario usuario = usuarioService.obtenerUsuarioActual();
+
+        if (usuario != null) {
+            return respuestaRepository.findAllByUsuario(usuario.getId());
+        } else {
+
+            return List.of();
         }
     }
 

@@ -14,12 +14,12 @@ public class Respuesta {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;  // Relación con la entidad Usuario
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "pregunta_id", nullable = false)
-    private Pregunta pregunta; // Relación con la entidad Pregunta
+    private Pregunta pregunta;
 
     @Column(name = "numero_respuesta", nullable = false)
-    private int numero_respuesta;  // Almacena la respuesta del usuario
+    private int numero_respuesta;
 }

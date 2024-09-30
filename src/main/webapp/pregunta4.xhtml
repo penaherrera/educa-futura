@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+   <title>Pregunta 4</title>
+   <h:outputStylesheet name="css/pregunta.css"/>
+</h:head>
+
+<h:body>
+   <h:form>
+      <h1>Pregunta 4</h1>
+      <h3>#{preguntaBean.texto}</h3>
+
+      <div class="select-options ">
+         <p:selectOneRadio id="basicAjax" value="#{preguntaBean.respuesta}" layout="grid" columns="1">
+            <p:ajax listener="#{preguntaBean.respuesta}" />
+
+            <f:selectItem itemValue="1" itemLabel="Analizando datos y aplicando soluciones numéricas o financieras" class="select-option " />
+            <f:selectItem itemValue="2" itemLabel="Hablando con las personas y colaborando para entender sus necesidades" class="select-option" />
+            <f:selectItem itemValue="3" itemLabel="Desarrollando soluciones tecnológicas o utilizando herramientas especializadas"  class="select-option" />
+            <f:selectItem itemValue="4" itemLabel="Diseñando soluciones visuales o estructurales que respondan a un reto creativo"  class="select-option"/>
+         </p:selectOneRadio>
+      </div>
+
+      <div class="button-container">
+         <h:commandButton type="button" value="REGRESAR" class="btnRegresar"
+                          styleClass="ui-button-raised ui-button-danger ui-button-flat"
+                          action="#{usuarioBean.saveUsuario()}"
+                          rendered="#{preguntaBean.preguntaId != 1}"/>
+
+
+         <h:commandButton value="SIGUIENTE" action="#{preguntaBean.continuar()}" update="message" styleClass="mr-2" icon="pi pi-check" class="btnEnviar"/>
+      </div>
+
+      <!-- Componente para mostrar mensajes -->
+      <p:growl id="message" showDetail="true"/>
+
+      <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+         <p:commandButton value="Yes" action="#{preguntaBean.continuar()}" update="message" styleClass="ui-confirmdialog-yes" />
+      </p:confirmDialog>
+   </h:form>
+</h:body>
+</html>

@@ -7,6 +7,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import sv.edu.udb.orientacionvocacional.repository.domain.Respuesta;
 
+import java.util.List;
 import java.util.Optional;
 
 @Named
@@ -48,5 +49,11 @@ public class RespuestaRepository {
         } catch (Exception e) {
             return Optional.empty();
         }
+    }
+
+    public List<Respuesta> findAllByUsuario(Long usuarioId) {
+        return entityManager.createQuery("SELECT r FROM Respuesta r WHERE r.usuario.id = :usuarioId", Respuesta.class)
+                .setParameter("usuarioId", usuarioId)
+                .getResultList();
     }
 }

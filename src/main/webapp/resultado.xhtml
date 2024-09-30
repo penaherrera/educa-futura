@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Resultado de la Orientación Vocacional</title>
+    </h:head>
+    <h:body>
+        <h:form id="resultadoForm">
+            <h2>Resultados de tu Test Vocacional</h2>
+
+            <!-- Llamar a cargarResultado para obtener los datos -->
+            <f:event listener="#{resultadoBean.cargarResultado}" type="preRenderView" />
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Carreras dedicadas a Finanzas: " />
+                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera1}" labelTemplate="{value}%" />
+
+                <h:outputLabel value="Carreras dedicadas al Serivicio Social y Medicina: " />
+                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera2}" labelTemplate="{value}%" />
+
+                <h:outputLabel value="Carreras dedicadas a Resolver Problemas y Creción: " />
+                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera3}" labelTemplate="{value}%" />
+
+                <h:outputLabel value="Carreras dedicadas al Desarrollo de la Cultura y Arte Social: " />
+                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera4}" labelTemplate="{value}%" />
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</f:view>
+</html>

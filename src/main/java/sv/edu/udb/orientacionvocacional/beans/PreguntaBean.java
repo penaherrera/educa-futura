@@ -17,6 +17,7 @@ import sv.edu.udb.orientacionvocacional.service.RespuestaService;
 import sv.edu.udb.orientacionvocacional.service.PreguntaService;
 import sv.edu.udb.orientacionvocacional.service.UsuarioService;
 import sv.edu.udb.orientacionvocacional.service.UsuarioSession;
+import sv.edu.udb.orientacionvocacional.service.ResultadoService;
 
 import java.io.Serializable;
 import java.util.Optional;
@@ -49,6 +50,9 @@ public class PreguntaBean implements Serializable {
 
     @Inject
     private UsuarioService usuarioService;
+
+    @Inject
+    private ResultadoService resultadoService;
 
     @PostConstruct
     public void init() {
@@ -124,6 +128,38 @@ public class PreguntaBean implements Serializable {
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+
+    public String finalizar() {
+        Pregunta preguntaActual = preguntaService.obtenerPreguntaActual();
+
+        if (preguntaActual == null) {
+            System.out.println("preguntaActual es null");
+            return "error.xhtml?faces-redirect=true";
+        }
+
+        Respuesta nuevaRespuesta = new Respuesta();
+
+        Usuario usuarioActual = usuarioService.obtenerUsuarioActual();
+        if (usuarioActual != null) {
+            nuevaRespuesta.setUsuario(usuarioActual);
+        } else {
+            System.out.println("Usuario no encontrado");
+            return "error.xhtml?faces-redirect=true";
+        }
+
+        nuevaRespuesta.setPregunta(preguntaActual);
+
+        nuevaRespuesta.setNumero_respuesta(respuesta);
+
+        respuestaService.saveRespuesta(nuevaRespuesta);
+
+        resultadoService.crearResultado(usuarioActual.getId());
+        addMessage("Confirmado", "Respuesta Enviada");
+
+        return "resultado.xhtml?faces-redirect=true";
+
     }
 
 
