@@ -6,28 +6,59 @@ import jakarta.inject.Named;
 import lombok.NoArgsConstructor;
 import sv.edu.udb.orientacionvocacional.repository.RespuestaRepository;
 import sv.edu.udb.orientacionvocacional.repository.domain.Respuesta;
-import sv.edu.udb.orientacionvocacional.repository.domain.Usuario; // Asegúrate de importar la clase Usuario
+import sv.edu.udb.orientacionvocacional.repository.domain.Usuario;
 
-@Named // Asegúrate de anotar la clase con @Named para que se pueda inyectar
+import java.util.Optional;
+
+@Named
 @RequestScoped
 @NoArgsConstructor(force = true)
 public class RespuestaService {
 
-    private final RespuestaRepository respuestaRepository;
-
-    @Inject // Inyección de dependencia
-    private UsuarioService usuarioService; // Inyectar UsuarioService
+    @Inject
+    private RespuestaRepository respuestaRepository;
 
     @Inject
-    public RespuestaService(RespuestaRepository respuestaRepository) {
-        this.respuestaRepository = respuestaRepository;
-    }
+    private UsuarioService usuarioService;
+
+    @Inject
+    private PreguntaService preguntaService;
+
+    @Inject
+    private UsuarioSession usuarioSession;
+
 
     public void saveRespuesta(Respuesta respuesta) {
-        Usuario usuario = usuarioService.obtenerUsuarioActual(); // Obtener el usuario actual
-        if (usuario != null) {
-            respuesta.setUsuario(usuario); // Asignar el usuario a la respuesta
+
+        Usuario usuario = usuarioService.obtenerUsuarioActual();
+        Long preguntaId = preguntaService.obtenerPreguntaActual().getId();
+
+        if (usuario != null && preguntaId != null) {
+            respuesta.setUsuario(usuario);
+            Optional<Respuesta> respuestaExistente = respuestaRepository.findByUsuarioAndPregunta(usuario.getId(), preguntaId);
+
+            if (respuestaExistente.isPresent()) {
+                respuestaRepository.update(respuestaExistente.get().getId(), respuesta);
+            } else {
+                respuestaRepository.save(respuesta);
+            }
+            Long preguntaActualId =  preguntaId + 1;
+            usuarioSession.setPreguntaActualId(Long.valueOf(preguntaActualId));
         }
-        respuestaRepository.save(respuesta); // Guardar la respuesta
     }
+
+    public Optional<Respuesta> getRespuestaByUserRespuesta() {
+
+        Usuario usuario = usuarioService.obtenerUsuarioActual();
+        Long preguntaId = preguntaService.obtenerPreguntaActual().getId();
+
+        Optional<Respuesta> respuestaExistente = respuestaRepository.findByUsuarioAndPregunta(usuario.getId(), preguntaId);
+
+        if (respuestaExistente.isPresent()) {
+            return respuestaExistente;
+        } else {
+            return Optional.empty();
+        }
+    }
+
 }

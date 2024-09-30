@@ -29,11 +29,12 @@
         </div>
 
         <div class="button-container">
-            <p:commandButton type="button" value="REGRESAR" styleClass="ui-button-raised ui-button-danger ui-button-flat" action="#{usuarioBean.saveUsuario()}"/>
+            <h:commandButton type="button" value="REGRESAR"
+                             styleClass="ui-button-raised ui-button-danger ui-button-flat"
+                             action="#{usuarioBean.saveUsuario()}"
+                             rendered="#{preguntaBean.preguntaId != 1}"/>
 
-            <p:commandButton value="ENVIAR" action="#{preguntaBean.continuar()}" update="message" styleClass="mr-2" icon="pi pi-check">
-
-            </p:commandButton>
+            <h:commandButton value="SIGUIENTE" action="#{preguntaBean.continuar()}" update="message" styleClass="mr-2" icon="pi pi-check"/>
         </div>
 
         <!-- Componente para mostrar mensajes -->
