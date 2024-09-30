@@ -29,9 +29,12 @@
         </div>
 
         <div class="button-container">
-            <p:commandButton type="button" value="REGRESAR" styleClass="ui-button-raised ui-button-danger ui-button-flat" action="#{usuarioBean.saveUsuario()}"/>
+            <h:commandButton type="button" value="REGRESAR"
+                             styleClass="ui-button-raised ui-button-danger ui-button-flat"
+                             action="#{usuarioBean.saveUsuario()}"
+                             rendered="#{preguntaBean.preguntaId != 1}"/>
 
-            <p:commandButton value="Continuar" action="#{preguntaBean.continuar}" />
+            <h:commandButton value="SIGUIENTE" action="#{preguntaBean.continuar()}" update="message" styleClass="mr-2" icon="pi pi-check"/>
         </div>
 
         <!-- Componente para mostrar mensajes -->
@@ -39,7 +42,7 @@
 
         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
-            <p:commandButton value="Si" action="#{preguntaBean.continuar()}" update="message" styleClass="ui-confirmdialog-yes" />
+            <p:commandButton value="Yes" action="#{preguntaBean.continuar()}" update="message" styleClass="ui-confirmdialog-yes" />
         </p:confirmDialog>
     </h:form>
 </h:body>

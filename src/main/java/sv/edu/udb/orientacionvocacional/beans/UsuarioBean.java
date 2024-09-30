@@ -34,10 +34,8 @@ public class UsuarioBean implements Serializable {
     public String saveUsuario() {
         String result = usuarioService.saveUsuario(nombre, correo);
         if ("success".equals(result)) {
-            System.out.println("Si se creo el usuario");
             return "pregunta1.xhtml?id=1&faces-redirect=true";
         } else {
-            System.out.println("No se creo el usuario");
             return null;
         }
     }

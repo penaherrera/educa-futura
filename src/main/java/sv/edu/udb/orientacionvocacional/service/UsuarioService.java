@@ -12,18 +12,13 @@ import sv.edu.udb.orientacionvocacional.repository.domain.Usuario;
 @NoArgsConstructor(force = true)
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository;
+    @Inject
+    private UsuarioRepository usuarioRepository;
 
     @Inject
     private UsuarioSession usuarioSession;
 
-    @Inject
-    public UsuarioService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
-
     public String saveUsuario(String nombre, String correo) {
-        System.out.println("Estoy en Save Usuario");
         if (nombre == null || nombre.isEmpty()) {
             return "El nombre es requerido";
         }

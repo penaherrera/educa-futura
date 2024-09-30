@@ -4,19 +4,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+    <title>Pregunta 2</title>
+    <h:outputStylesheet name="css/pregunta.css"/>
+</h:head>
+
+<h:body>
     <h:form>
-        <h:outputLabel value="#{preguntaBean.texto}" />
+        <h1>Pregunta 2</h1>
+        <h3>#{preguntaBean.texto}</h3>
 
-        <h:selectOneRadio value="#{preguntaBean.respuesta}">
-            <f:selectItem itemValue="1" itemLabel="Oficinas con un entorno formal y estructurado" />
-            <f:selectItem itemValue="2" itemLabel="Un espacio donde puedas interactuar con muchas personas" />
-            <f:selectItem itemValue="3" itemLabel="Laboratorios o ambientes de alta tecnología" />
-            <f:selectItem itemValue="4" itemLabel="Talleres o sitios de construcción" />
-        </h:selectOneRadio>
+        <div class="select-options ">
+            <p:selectOneRadio id="basicAjax" value="#{preguntaBean.respuesta}" layout="grid" columns="1">
+                <p:ajax listener="#{preguntaBean.respuesta}" />
 
-        <h:commandButton value="Continuar" action="#{preguntaBean.continuar}" />
+                <f:selectItem itemValue="1" itemLabel="Oficinas con un entorno formal y estructurado" class="select-option " />
+                <f:selectItem itemValue="2" itemLabel="Un espacio donde puedas interactuar con muchas personas" class="select-option" />
+                <f:selectItem itemValue="3" itemLabel="Laboratorios o ambientes de alta tecnología"  class="select-option" />
+                <f:selectItem itemValue="4" itemLabel="Talleres o sitios de construcción"  class="select-option"/>
+            </p:selectOneRadio>
+        </div>
+
+        <div class="button-container">
+            <h:commandButton value="REGRESAR" action="#{preguntaBean.regresar()}" rendered="#{preguntaBean.preguntaId != 1}"/>
+
+            <h:commandButton value="SIGUIENTE" action="#{preguntaBean.continuar()}" update="message" styleClass="mr-2" icon="pi pi-check"/>
+        </div>
+
+        <!-- Componente para mostrar mensajes -->
+        <p:growl id="message" showDetail="true"/>
+
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Yes" action="#{preguntaBean.continuar()}" update="message" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog>
     </h:form>
-</f:view>
+</h:body>
 </html>

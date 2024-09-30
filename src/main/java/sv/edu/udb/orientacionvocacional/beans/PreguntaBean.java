@@ -16,6 +16,10 @@ import sv.edu.udb.orientacionvocacional.repository.domain.Usuario;
 import sv.edu.udb.orientacionvocacional.service.RespuestaService;
 import sv.edu.udb.orientacionvocacional.service.PreguntaService;
 import sv.edu.udb.orientacionvocacional.service.UsuarioService;
+import sv.edu.udb.orientacionvocacional.service.UsuarioSession;
+
+import java.io.Serializable;
+import java.util.Optional;
 
 import java.io.Serializable;
 
@@ -36,6 +40,9 @@ public class PreguntaBean implements Serializable {
 
     @Inject
     private RespuestaService respuestaService;
+
+    @Inject
+    private UsuarioSession usuarioSession;
 
     @Inject
     private PreguntaService preguntaService;
@@ -59,12 +66,18 @@ public class PreguntaBean implements Serializable {
     }
 
     private void cargarPregunta() {
+
         Pregunta preguntaActual = preguntaService.getPreguntaById(preguntaId);
+        Optional<Respuesta> respuestaActual = respuestaService.getRespuestaByUserRespuesta();
+
         if (preguntaActual != null) {
             this.texto = preguntaActual.getTexto();
-            this.respuesta = 1; // Inicializa respuesta para evitar respuestas vacias
+            this.respuesta = 1; // Inicializa respuesta a 1 para evitar respuestas vacías
         }
+
+        respuestaActual.ifPresent(respuesta -> this.respuesta = respuesta.getNumero_respuesta());
     }
+
 
     public String continuar() {
         Pregunta preguntaActual = preguntaService.obtenerPreguntaActual();
@@ -91,9 +104,19 @@ public class PreguntaBean implements Serializable {
         respuestaService.saveRespuesta(nuevaRespuesta);
 
         Long siguientePreguntaId = preguntaActual.getId() + 1;
-        //agrega un mensaje al confirmar respuesta
+       //agrega un mensaje al confirmar respuesta
         addMessage("Confirmado", "Respuesta Enviada");
         return "pregunta" + siguientePreguntaId + ".xhtml?id=" + siguientePreguntaId + "&faces-redirect=true";
+
+    }
+
+    public String regresar(){
+
+        Pregunta preguntaActual = preguntaService.obtenerPreguntaActual();
+        Long preguntaAnteriorId = preguntaActual.getId() - 1;
+
+        usuarioSession.setPreguntaActualId(Long.valueOf(preguntaAnteriorId));
+        return "pregunta" + preguntaAnteriorId + ".xhtml?id=" + preguntaAnteriorId + "&faces-redirect=true";
 
     }
 
