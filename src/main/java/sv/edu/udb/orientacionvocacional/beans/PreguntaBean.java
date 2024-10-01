@@ -98,7 +98,7 @@ public class PreguntaBean implements Serializable {
             nuevaRespuesta.setUsuario(usuarioActual);
         } else {
             System.out.println("Usuario no encontrado");
-            return "error.xhtml?faces-redirect=true";
+            return "index.xhtml?faces-redirect=true";
         }
 
         nuevaRespuesta.setPregunta(preguntaActual);
@@ -146,7 +146,7 @@ public class PreguntaBean implements Serializable {
             nuevaRespuesta.setUsuario(usuarioActual);
         } else {
             System.out.println("Usuario no encontrado");
-            return "error.xhtml?faces-redirect=true";
+            return "index.xhtml?faces-redirect=true";
         }
 
         nuevaRespuesta.setPregunta(preguntaActual);

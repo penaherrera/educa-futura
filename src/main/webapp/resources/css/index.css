@@ -10,9 +10,17 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 2px 2px 100px rgba(0, 0, 0, 01);
+    box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.1);
     width: 400px;
+}
 
+.titulo, .subtitulo {
+    color: #333;
+}
+
+.header-container {
+    text-align: center;
+    margin-bottom: 20px;
 }
 .ui-inputgroup {
     width: 100%;
@@ -21,19 +29,16 @@ input {
     width: 100%;
     padding: 10px;
 }
-h3 {
+h2, h3 {
     text-align: center;
     color: #fff;
 }
-
 .button-container{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
-
-
 .btnEnviar {
     background-color: blue;
     color: white;
@@ -45,7 +50,6 @@ h3 {
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
     transition: .2s;
 }
-
 .btnEnviar:hover {
     background-color: darkblue;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);

@@ -27,10 +27,9 @@ public class UsuarioBean implements Serializable {
    private List<String> carrerasSeleccionadas = new ArrayList<>();
 
    public List<String> getCarrerasDisponibles() {
-       // Devuelve la lista de carreras disponibles
-        //mandar a llamar de la bd
         return List.of("Ingeniería en Sistemas", "Arquitectura", "Medicina", "Psicología");
     }
+
     public String saveUsuario() {
         String result = usuarioService.saveUsuario(nombre, correo);
         if ("success".equals(result)) {

@@ -1,5 +1,6 @@
 package sv.edu.udb.orientacionvocacional.beans;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -19,8 +20,13 @@ public class ResultadoBean {
     @Getter
     private Resultado resultado;
 
+    @PostConstruct
+    public void init() {
+        cargarResultado();
+    }
+
     public void cargarResultado() {
-        // Llama al método de servicio para obtener el resultado del usuario actual
         this.resultado = resultadoService.obtenerResultadoPorUsuario();
+        System.out.println("Este es el resultado: " + resultado);
     }
 }
