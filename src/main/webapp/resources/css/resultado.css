@@ -1,0 +1,16 @@
+body {
+    background-color: #1f2937;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+}
+
+#chartContainer {
+    width: 50%;
+    margin: auto;
+}
+.chart {
+    max-width: 100%;
+}

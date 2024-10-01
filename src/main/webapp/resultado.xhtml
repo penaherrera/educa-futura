@@ -3,33 +3,77 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
     <h:head>
         <title>Resultado de la Orientación Vocacional</title>
+        <!-- Incluir Chart.js desde CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js" type="text/javascript"></script>
+
+        <h:outputStylesheet name="css/resultado.css"/>
+
     </h:head>
     <h:body>
         <h:form id="resultadoForm">
-            <h2>Resultados de tu Test Vocacional</h2>
+            <!-- Contenedor para el gráfico de pastel -->
+            <div id="chartContainer">
+                <div class="chart" id="myPieChart"></div>
+            </div>
 
-            <!-- Llamar a cargarResultado para obtener los datos -->
-            <f:event listener="#{resultadoBean.cargarResultado}" type="preRenderView" />
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Crear un canvas dinámicamente
+                    const ctx = document.createElement('canvas');
+                    document.getElementById('myPieChart').appendChild(ctx);
 
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Carreras dedicadas a Finanzas: " />
-                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera1}" labelTemplate="{value}%" />
+                    const porcentajes = [
+                        #{resultadoBean.resultado.porcentajeCarrera1},
+                        #{resultadoBean.resultado.porcentajeCarrera2},
+                        #{resultadoBean.resultado.porcentajeCarrera3},
+                        #{resultadoBean.resultado.porcentajeCarrera4},
+                    ];
 
-                <h:outputLabel value="Carreras dedicadas al Serivicio Social y Medicina: " />
-                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera2}" labelTemplate="{value}%" />
 
-                <h:outputLabel value="Carreras dedicadas a Resolver Problemas y Creción: " />
-                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera3}" labelTemplate="{value}%" />
+                    const data = {
+                        labels: [
+                            "Carreras dedicadas a Finanzas",
+                            "Carreras dedicadas al Servicio Social y Medicina",
+                            "Carreras dedicadas a Resolver Problemas y Creación",
+                            "Carreras dedicadas al Desarrollo de la Cultura y Arte Social"
+                        ],
+                        datasets: [{
+                            label: 'Porcentaje obtenido',
+                            data: porcentajes,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.6)', // Finanzas
+                                'rgba(54, 162, 235, 0.6)', // Medicina
+                                'rgba(255, 205, 86, 0.6)', // Resolución de Problemas
+                                'rgba(114,192,75,0.6)'     // Cultura y Arte
+                            ]
+                        }]
+                    };
 
-                <h:outputLabel value="Carreras dedicadas al Desarrollo de la Cultura y Arte Social: " />
-                <p:progressBar value="#{resultadoBean.resultado.porcentajeCarrera4}" labelTemplate="{value}%" />
-            </h:panelGrid>
+                    const myPieChart = new Chart(ctx.getContext('2d'), {
+                        type: 'pie',
+                        data: data,
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Resultados del Test Vocacional',
+                                    color: "#FFF",
+                                    font:{
+                                        size: 20
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+            </script>
         </h:form>
     </h:body>
-</f:view>
 </html>
