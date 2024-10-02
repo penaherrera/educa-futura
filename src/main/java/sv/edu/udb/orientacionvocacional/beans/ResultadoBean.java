@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 import sv.edu.udb.orientacionvocacional.repository.domain.Resultado;
 import sv.edu.udb.orientacionvocacional.service.ResultadoService;
 
+import java.awt.*;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+
 @Named
 @RequestScoped
 @NoArgsConstructor
@@ -22,5 +27,6 @@ public class ResultadoBean {
     public void cargarResultado() {
         // Llama al método de servicio para obtener el resultado del usuario actual
         this.resultado = resultadoService.obtenerResultadoPorUsuario();
+
     }
 }
