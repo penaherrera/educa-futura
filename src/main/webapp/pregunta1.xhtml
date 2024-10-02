@@ -23,7 +23,7 @@
 <h:body>
     <h:form>
         <h1 class="title">Pregunta 1</h1>
-        <h3 class="title">Pruebaaaaaaaaaaaa</h3>
+        <h3 class="title">#{preguntaBean.texto}</h3>
 
         <div class="select-options ">
             <p:selectOneRadio id="basicAjax" value="#{preguntaBean.respuesta}" layout="grid" columns="1">
@@ -39,7 +39,7 @@
         <div class="button-container">
             <h:commandButton type="button" value="REGRESAR" class="btnRegresar"
                             styleClass="ui-button-raised ui-button-danger ui-button-flat"
-                             action="#{usuarioBean.saveUsuario()}"
+                             action="#{preguntaBean.regresar()}"
                              rendered="#{preguntaBean.preguntaId != 1}"/>
 
 

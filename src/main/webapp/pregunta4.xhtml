@@ -37,10 +37,7 @@
       </div>
 
       <div class="button-container">
-         <h:commandButton type="button" value="REGRESAR" class="btnRegresar"
-                          styleClass="ui-button-raised ui-button-danger ui-button-flat"
-                          action="#{usuarioBean.saveUsuario()}"
-                          rendered="#{preguntaBean.preguntaId != 1}"/>
+         <h:commandButton value="REGRESAR" class="btnRegresar" action="#{preguntaBean.regresar()}" rendered="#{preguntaBean.preguntaId != 1}"/>
 
 
          <h:commandButton value="SIGUIENTE" action="#{preguntaBean.continuar()}" update="message" styleClass="mr-2" icon="pi pi-check" class="btnEnviar"/>
