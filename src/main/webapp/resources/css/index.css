@@ -32,6 +32,8 @@ input {
 h2, h3 {
     text-align: center;
     color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
 }
 .button-container{
     display: flex;
@@ -49,6 +51,7 @@ h2, h3 {
     cursor: pointer;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
     transition: .2s;
+    font-family: 'Oswald', sans-serif;
 }
 .btnEnviar:hover {
     background-color: darkblue;

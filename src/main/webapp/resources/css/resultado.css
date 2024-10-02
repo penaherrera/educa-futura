@@ -1,5 +1,6 @@
 body {
     background-color: #1f2937;
+    font-family: 'Oswald', sans-serif;
 }
 
 h2 {
@@ -13,4 +14,8 @@ h2 {
 }
 .chart {
     max-width: 100%;
+}
+
+label {
+    color: white; 
 }

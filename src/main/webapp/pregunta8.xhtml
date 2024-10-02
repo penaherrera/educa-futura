@@ -10,12 +10,20 @@
 <h:head>
     <title>Pregunta 8</title>
     <h:outputStylesheet name="css/pregunta.css"/>
+
+    <h:outputStylesheet  rel="preconnect" href="https://fonts.googleapis.com"/>
+    <h:outputStylesheet  rel="preconnect" href="https://fonts.gstatic.com" />
+    <h:outputStylesheet  href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700display=swap" rel="stylesheet"/>
+
+    <h:outputStylesheet  rel="preconnect" href="https://fonts.googleapis.com"/>
+    <h:outputStylesheet  rel="preconnect" href="https://fonts.gstatic.com" />
+    <h:outputStylesheet href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700family=Roboto" rel="stylesheet"/>
 </h:head>
 
 <h:body>
     <h:form>
-        <h1>Pregunta 8</h1>
-        <h3>#{preguntaBean.texto}</h3>
+        <h1 class="title">Pregunta 8</h1>
+        <h3 class="title">#{preguntaBean.texto}</h3>
 
         <div class="select-options ">
             <p:selectOneRadio id="basicAjax" value="#{preguntaBean.respuesta}" layout="grid" columns="1">

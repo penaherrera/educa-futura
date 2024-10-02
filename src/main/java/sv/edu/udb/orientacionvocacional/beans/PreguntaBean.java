@@ -54,6 +54,7 @@ public class PreguntaBean implements Serializable {
     @Inject
     private ResultadoService resultadoService;
 
+
     @PostConstruct
     public void init() {
 

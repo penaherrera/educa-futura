@@ -9,7 +9,14 @@
         <!-- Incluir Chart.js desde CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js" type="text/javascript"></script>
 
-        <h:outputStylesheet name="css/resultado.css"/>
+        <h:outputStylesheet  rel="preconnect" href="https://fonts.googleapis.com"/>
+        <h:outputStylesheet  rel="preconnect" href="https://fonts.gstatic.com" />
+        <h:outputStylesheet  href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700display=swap" rel="stylesheet"/>
+
+        <h:outputStylesheet  rel="preconnect" href="https://fonts.googleapis.com"/>
+        <h:outputStylesheet  rel="preconnect" href="https://fonts.gstatic.com" />
+        <h:outputStylesheet href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700family=Roboto" rel="stylesheet"/>
+<h:outputStylesheet name="css/resultado.css"/>
 
     </h:head>
     <h:body>
@@ -60,13 +67,20 @@
                             plugins: {
                                 legend: {
                                     position: 'top',
+                                    labels: {
+                                        color: '#FFF',
+                                        font: {
+                                            size: 14
+                                        }
+                                    }
                                 },
                                 title: {
                                     display: true,
                                     text: 'Resultados del Test Vocacional',
                                     color: "#FFF",
                                     font:{
-                                        size: 30
+                                        size: 30,
+                                        style: "Oswald"
                                     }
                                 }
                             }
