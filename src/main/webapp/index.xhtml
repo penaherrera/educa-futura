@@ -8,20 +8,26 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Formulario de Usuario</title>
+    <title>Iniciar Test</title>
     <h:outputStylesheet name="css/index.css"/>
 </h:head>
 
 <h:body>
     <h:form>
-
         <div class="card" style="background: white; width: 350px;">
+            <!-- Contenedor para centrar imagen y títulos -->
+            <div class="header-container" style="text-align: center;">
+                <h:graphicImage name="img/logo-san-bartolo.jpg" alt="Logo Institución" style="width: 100px;"/>
+                <h2 class="titulo">Complejo Educativo Montes De San Bartolo IV</h2>
+                <h2 class="subtitulo">Test de orientación vocacional</h2>
+            </div>
+
             <div class="grid ui-fluid">
                 <h3>Ingrese su nombre</h3>
                 <div class="col-12 md:col-4">
                     <div class="ui-inputgroup">
                         <div class="ui-inputgroup-addon"><i class="pi pi-user"></i></div>
-                        <p:inputText placeholder="Username" id="nombreInput" value="#{usuarioBean.nombre}" required="true" />
+                        <p:inputText placeholder="Nombre" id="nombreInput" value="#{usuarioBean.nombre}" required="true" />
                     </div>
                 </div>
             </div>
@@ -30,26 +36,9 @@
             <div class="col-12 md:col-4">
                 <div class="ui-inputgroup">
                     <div class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></div>
-                    <p:inputText placeholder="Correo" id="correo" value="#{usuarioBean.correo}" required="true" />
+                    <p:inputText placeholder="Correo Electrónico" id="correo" value="#{usuarioBean.correo}" required="true" />
                 </div>
             </div>
-
-<!--            <h3>Seleccione su carrera de preferencia</h3>-->
-<!--            <div class="col-12 md:col-4">-->
-<!--                <div class="ui-inputgroup">-->
-<!--                    <div class="ui-inputgroup-addon" ><i class="pi pi-graduation-cap"></i></div>-->
-<!--                    <p:selectCheckboxMenu id="carrerasMenu"-->
-<!--                                          label="Carreras"-->
-<!--                                          value="#{usuarioBean.carrerasSeleccionadas}"-->
-<!--                                          filter="true"-->
-<!--                                          dynamic="true"-->
-<!--                                          panelStyle="width: 15rem"-->
-<!--                                          scrollHeight="250"-->
-<!--                                          style="width: 100%">-->
-<!--                        <f:selectItems value="#{usuarioBean.carrerasDisponibles}" var="carrera" itemValue="#{carrera}" itemLabel="#{carrera}" />-->
-<!--                    </p:selectCheckboxMenu>-->
-<!--                </div>-->
-<!--            </div>-->
 
             <div class="button-container">
                 <h:commandButton value="INGRESAR" styleClass="ui-button-raised ui-button-flat" action="#{usuarioBean.saveUsuario()}" class="btnEnviar" />
