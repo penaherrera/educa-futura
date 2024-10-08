@@ -10,6 +10,7 @@
 <h:head>
    <title>Pregunta 4</title>
    <h:outputStylesheet name="css/pregunta.css"/>
+   <h:outputStylesheet name="css/styles.css"/>
 
    <h:outputStylesheet  rel="preconnect" href="https://fonts.googleapis.com"/>
    <h:outputStylesheet  rel="preconnect" href="https://fonts.gstatic.com" />
@@ -21,7 +22,10 @@
 </h:head>
 
 <h:body>
-   <h:form>
+
+   <ui:include src="/resources/components/navbar.xhtml" />
+
+   <h:form styleClass="pregunta-form">
       <h1 class="title">Pregunta 4</h1>
       <h3 class="title">#{preguntaBean.texto}</h3>
 
@@ -52,4 +56,7 @@
       </p:confirmDialog>
    </h:form>
 </h:body>
+
+<ui:include src="/resources/components/footer.xhtml" />
+
 </html>

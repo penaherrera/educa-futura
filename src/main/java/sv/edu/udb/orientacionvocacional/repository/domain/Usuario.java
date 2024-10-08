@@ -16,4 +16,7 @@ public class Usuario {
 
     @Column(nullable = false)
     private String correoElectronico;
+
+    @Column
+    private Integer preguntaActualId;
 }

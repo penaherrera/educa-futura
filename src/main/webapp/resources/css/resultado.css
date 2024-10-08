@@ -1,6 +1,7 @@
 body {
     background-color: #1f2937;
     font-family: 'Oswald', sans-serif;
+    padding-top: 80px; /* Espacio para el navbar */
 }
 
 h2 {
@@ -17,5 +18,5 @@ h2 {
 }
 
 label {
-    color: white; 
+    color: white;
 }

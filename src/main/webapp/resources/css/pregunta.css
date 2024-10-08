@@ -1,17 +1,21 @@
 
 body {
+    margin: 0;
+    padding-top: 80px; /* Espacio para el navbar */
+    background-color: #1f2937;
+    font-family: 'Roboto', sans-serif;
     display: flex;
+    flex-flow: row;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #1f2937;
 }
 
 .title{
     font-family: 'Oswald', sans-serif;
-
 }
-form {
+
+.pregunta-form {
     background-color: white;
     padding: 20px;
     border-radius: 10px;

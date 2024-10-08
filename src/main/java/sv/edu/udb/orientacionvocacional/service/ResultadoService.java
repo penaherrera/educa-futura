@@ -83,16 +83,12 @@ public class ResultadoService {
     }
 
     public Resultado obtenerResultadoPorUsuario() {
-        // Obtener el usuario actual
         Usuario usuario = usuarioService.obtenerUsuarioActual();
 
-        // Verificar si el usuario no es nulo
         if (usuario != null) {
-            // Buscar el resultado del usuario en la base de datos
             return resultadoRepository.findByUsuario(usuario.getId());
         }
 
-        // Si el usuario es nulo o no tiene resultados, devolver null
         return null;
     }
 }

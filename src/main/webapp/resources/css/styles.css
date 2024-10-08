@@ -1,0 +1,61 @@
+footer {
+    background-color: white;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+    background-color: #fff;
+    position: fixed; /* Fijo en la parte superior */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Cambiado a space-between para distribuir el espacio entre elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 10px 20px;
+}
+
+.navbar h2.titulo {
+    color: #333;
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Oswald', sans-serif;
+    flex-grow: 1; /* Permite que el título ocupe el espacio restante para centrarlo */
+    text-align: center; /* Centra el texto dentro de su área */
+}
+
+.navbar img {
+    height: 80px;
+    margin-right: 20px; /* Añadir un margen a la derecha para separar de el título */
+}
+
+.navbar > form {
+    margin: 0;
+    padding: 0; /* Eliminar padding para que no afecte el tamaño del formulario */
+    display: inline;
+}
+
+.btnRegresar {
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btnRegresar:hover {
+    background-color: red;
+    color: white;
+}

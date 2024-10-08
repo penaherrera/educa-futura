@@ -89,7 +89,7 @@ public class PreguntaBean implements Serializable {
 
         if (preguntaActual == null) {
             System.out.println("preguntaActual es null");
-            return "error.xhtml?faces-redirect=true";
+            return "index.xhtml?faces-redirect=true";
         }
 
         Respuesta nuevaRespuesta = new Respuesta();
@@ -109,6 +109,8 @@ public class PreguntaBean implements Serializable {
         respuestaService.saveRespuesta(nuevaRespuesta);
 
         Long siguientePreguntaId = preguntaActual.getId() + 1;
+
+        usuarioService.actualizarPreguntaId(siguientePreguntaId);
        //agrega un mensaje al confirmar respuesta
         addMessage("Confirmado", "Respuesta Enviada");
         return "pregunta" + siguientePreguntaId + ".xhtml?id=" + siguientePreguntaId + "&faces-redirect=true";
@@ -121,6 +123,7 @@ public class PreguntaBean implements Serializable {
         Long preguntaAnteriorId = preguntaActual.getId() - 1;
 
         usuarioSession.setPreguntaActualId(Long.valueOf(preguntaAnteriorId));
+        usuarioService.actualizarPreguntaId(preguntaAnteriorId);
         return "pregunta" + preguntaAnteriorId + ".xhtml?id=" + preguntaAnteriorId + "&faces-redirect=true";
 
     }
@@ -137,7 +140,7 @@ public class PreguntaBean implements Serializable {
 
         if (preguntaActual == null) {
             System.out.println("preguntaActual es null");
-            return "error.xhtml?faces-redirect=true";
+            return "index.xhtml?faces-redirect=true";
         }
 
         Respuesta nuevaRespuesta = new Respuesta();

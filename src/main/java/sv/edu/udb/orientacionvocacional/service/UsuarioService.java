@@ -47,4 +47,29 @@ public class UsuarioService {
         }
         return null;
     }
+
+    public Usuario obtenerUsuario(String correo) {
+        if (correo == null || correo.isEmpty()) {
+            return null;
+        }
+        return usuarioRepository.findByEmail(correo);
+    }
+
+    public void actualizarPreguntaId(Long nuevaPreguntaId) {
+
+        Long usuarioId = usuarioSession.getUsuarioId();
+
+
+        if (usuarioId != null) {
+
+            Usuario usuario = usuarioRepository.findById(usuarioId);
+
+
+            if (usuario != null) {
+                usuario.setPreguntaActualId(Math.toIntExact(nuevaPreguntaId));
+                usuarioRepository.update(usuario);
+            }
+        }
+    }
+
 }
